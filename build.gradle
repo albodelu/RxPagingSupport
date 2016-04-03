@@ -5,7 +5,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.0.0-rc1'
+        // Fix possible issue in JitPack about gradle plugin version
+        // See https://github.com/jitpack/jitpack.io/issues/409
+        classpath 'com.android.tools.build:gradle:2.0.0+'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
 
         // For Jitpack... Source https://jitpack.io/docs/ANDROID/
