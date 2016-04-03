@@ -23,7 +23,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import rx.functions.Action0;
 import rx.functions.Func1;
 
 /**
@@ -44,7 +43,10 @@ public abstract class RxPagedAdapter<T, VH extends RecyclerView.ViewHolder & RxP
         this.settings = settings;
         this.manager = manager;
         this.manager.setAdapter(this);
-        this.manager.initStateFromBundle(savedInstanceState);
+        // TODO: 03/04/2016 Consider removing YODA conditions and finish initState behavior.
+        if (null != savedInstanceState) {
+            this.manager.initStateFromBundle(savedInstanceState);
+        }
         initState(savedInstanceState);
     }
 
