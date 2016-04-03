@@ -42,31 +42,20 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.exceptions.Reporter;
-import org.mockito.internal.invocation.InvocationMatcher;
-import org.mockito.internal.invocation.InvocationsFinder;
-import org.mockito.internal.verification.AtLeast;
-import org.mockito.internal.verification.AtMost;
-import org.mockito.internal.verification.api.VerificationData;
-import org.mockito.invocation.Invocation;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.mockito.verification.VerificationMode;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
-import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.observers.TestObserver;
 import rx.schedulers.Schedulers;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
@@ -82,7 +71,6 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -488,7 +476,7 @@ public class ManagerTest {
         Parcel parcel = Parcel.obtain();
         parcel.writeBundle(savedInstance);
         parcel.setDataPosition(0);
-        Bundle recoveredState = parcel.readBundle();
+        Bundle recoveredState = parcel.readBundle(getClass().getClassLoader());
         parcel.recycle();
         assertThat(savedInstance, not(sameInstance(recoveredState)));
 
