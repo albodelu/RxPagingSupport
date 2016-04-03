@@ -1,3 +1,8 @@
 <component name="CopyrightManager">
-  <settings default="AL2_InQBarna_2015_todayYear" />
+  <settings default="AL2_InQBarna_2015_to_todayYear">
+    <LanguageOptions name="JAVA">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankAfter" value="false" />
+    </LanguageOptions>
+  </settings>
 </component>
