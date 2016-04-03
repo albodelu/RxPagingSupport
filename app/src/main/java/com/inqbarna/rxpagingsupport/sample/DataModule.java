@@ -46,7 +46,7 @@ public class DataModule {
         return new DataConnection<DataItem>() {
             @Override
             public void connectWith(RxPagedAdapter<DataItem, ?> adapter) {
-                adapter.beginConnection(dataConnection, null);
+                adapter.beginConnection(dataConnection);
             }
         };
     }
