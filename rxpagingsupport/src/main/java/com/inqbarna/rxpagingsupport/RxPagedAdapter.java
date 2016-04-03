@@ -155,6 +155,7 @@ public abstract class RxPagedAdapter<T, VH extends RecyclerView.ViewHolder & RxP
 
     public void onSaveInstanceState(Bundle outState) {
         manager.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 
     public void setFilterFunc(Func1<T, Boolean> filterFunc) {

@@ -39,11 +39,11 @@ abstract public class ChoiceCapableAdapter<VH extends RecyclerView.ViewHolder>
         return choiceMode.isChecked(position);
     }
 
-    void onSaveInstanceState(Bundle state) {
+    public void onSaveInstanceState(Bundle state) {
         choiceMode.onSaveInstanceState(state);
     }
 
-    void onRestoreInstanceState(Bundle state) {
+    public void onRestoreInstanceState(Bundle state) {
         choiceMode.onRestoreInstanceState(state);
     }
 }

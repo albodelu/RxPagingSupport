@@ -46,7 +46,7 @@ public class TestAdapter extends RxPagedAdapter<DataItem, TestHolder>{
         final ProgressBar view = new ProgressBar(parent.getContext());
         view.setId(R.id.progress);
         view.setIndeterminate(true);
-        return new TestHolder(view);
+        return new TestHolder(this, view);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class TestAdapter extends RxPagedAdapter<DataItem, TestHolder>{
 
     @Override
     protected TestHolder doCreateViewHolder(ViewGroup parent, int viewType) {
-        return new TestHolder(LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false));
+        return new TestHolder(this, LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false));
     }
 
     @Override

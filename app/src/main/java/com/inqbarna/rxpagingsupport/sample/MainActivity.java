@@ -57,6 +57,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public void onRestoreInstanceState(Bundle state) {
+        adapter.onRestoreInstanceState(state);
+    }
+
+    @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
     }

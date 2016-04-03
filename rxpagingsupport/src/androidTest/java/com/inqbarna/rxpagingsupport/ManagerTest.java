@@ -203,7 +203,7 @@ public class ManagerTest {
 
     private static class TestAdapter extends RxPagedAdapter<Item, DummyHolder> {
         public TestAdapter(Settings settings) {
-            super(settings, null);
+            super(settings, null, null);
         }
 
         @Override

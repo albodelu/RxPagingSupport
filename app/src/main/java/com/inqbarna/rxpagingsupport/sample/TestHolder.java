@@ -17,11 +17,12 @@
 package com.inqbarna.rxpagingsupport.sample;
 
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.inqbarna.rxpagingsupport.RxPagedAdapter;
+import com.inqbarna.rxpagingsupport.multiselection.ChoiceCapableAdapter;
+import com.inqbarna.rxpagingsupport.multiselection.ClickableViewHolder;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,15 +31,14 @@ import butterknife.ButterKnife;
  * @author David García <david.garcia@inqbarna.com>
  * @version 1.0 3/11/15
  */
-public class TestHolder extends RecyclerView.ViewHolder implements RxPagedAdapter.LoadHolder {
-
+public class TestHolder extends ClickableViewHolder implements RxPagedAdapter.LoadHolder {
 
     @Nullable
     @Bind(R.id.row_text)
     TextView text;
 
-    public TestHolder(View itemView) {
-        super(itemView);
+    public TestHolder(ChoiceCapableAdapter adapter, View itemView) {
+        super(adapter, itemView);
         ButterKnife.bind(this, itemView);
     }
 
@@ -50,6 +50,7 @@ public class TestHolder extends RecyclerView.ViewHolder implements RxPagedAdapte
     public void bindTo(DataItem item) {
         if (null != text) {
             text.setText(item.getShowText());
+            setRowActivatedOnBind();
         }
     }
 }
