@@ -25,6 +25,7 @@ import android.widget.ProgressBar;
 import com.inqbarna.rxpagingsupport.PageManager;
 import com.inqbarna.rxpagingsupport.RxPagedAdapter;
 import com.inqbarna.rxpagingsupport.Settings;
+import com.inqbarna.rxpagingsupport.multiselection.MultiChoiceMode;
 
 /**
  * @author David García <david.garcia@inqbarna.com>
@@ -33,11 +34,11 @@ import com.inqbarna.rxpagingsupport.Settings;
 public class TestAdapter extends RxPagedAdapter<DataItem, TestHolder>{
 
     public TestAdapter(PageManager<DataItem> manager, Settings settings, @Nullable Bundle savedInstanceState) {
-        super(manager, settings, savedInstanceState);
+        super(manager, settings, savedInstanceState, new MultiChoiceMode());
     }
 
     public TestAdapter(Settings settings, Bundle savedInstanceState) {
-        super(settings, savedInstanceState);
+        super(settings, savedInstanceState, new MultiChoiceMode());
     }
 
     @Override

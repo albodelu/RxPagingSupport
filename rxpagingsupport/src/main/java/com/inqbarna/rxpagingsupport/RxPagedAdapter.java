@@ -23,12 +23,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.inqbarna.rxpagingsupport.multiselection.ChoiceCapableAdapter;
+import com.inqbarna.rxpagingsupport.multiselection.ChoiceMode;
+
 import rx.functions.Func1;
 
 /**
  * @author David García <david.garcia@inqbarna.com>
  */
-public abstract class RxPagedAdapter<T, VH extends RecyclerView.ViewHolder & RxPagedAdapter.LoadHolder> extends RecyclerView.Adapter<VH> {
+public abstract class RxPagedAdapter<T, VH extends RecyclerView.ViewHolder & RxPagedAdapter.LoadHolder> extends ChoiceCapableAdapter<VH> {
 
     protected final static int RESERVED_LOADING_TYPE = R.layout.reserved_loading;
 
@@ -39,7 +42,9 @@ public abstract class RxPagedAdapter<T, VH extends RecyclerView.ViewHolder & RxP
     private       PageManager<T> manager;
     private final Settings       settings;
 
-    public RxPagedAdapter(PageManager<T> manager, Settings settings, @Nullable Bundle savedInstanceState) {
+    public RxPagedAdapter(PageManager<T> manager, Settings settings,
+                          @Nullable Bundle savedInstanceState, ChoiceMode choiceMode) {
+        super(choiceMode);
         this.settings = settings;
         this.manager = manager;
         this.manager.setAdapter(this);
@@ -50,7 +55,9 @@ public abstract class RxPagedAdapter<T, VH extends RecyclerView.ViewHolder & RxP
         initState(savedInstanceState);
     }
 
-    public RxPagedAdapter(Settings settings, @Nullable Bundle savedInstanceState) {
+    public RxPagedAdapter(Settings settings, @Nullable Bundle savedInstanceState,
+                          ChoiceMode choiceMode) {
+        super(choiceMode);
         this.settings = settings;
         manager = new PageManager<>(this, settings, savedInstanceState);
         initState(savedInstanceState);
